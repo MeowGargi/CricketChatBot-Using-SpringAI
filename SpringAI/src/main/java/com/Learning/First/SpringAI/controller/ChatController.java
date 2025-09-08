@@ -39,9 +39,10 @@ public class ChatController {
     }
 
     @GetMapping("/cricketbot")
-    public CricketResponse getCricketResponse(
+    public ResponseEntity<CricketResponse> getCricketResponse(
             @RequestParam("inputText") String inputText
     ) throws JsonProcessingException{
-        return chatService.generateCricketResponse(inputText);
+        CricketResponse cricketResponse = chatService.generateCricketResponse(inputText);
+        return ResponseEntity.ok(cricketResponse);
     }
 }
